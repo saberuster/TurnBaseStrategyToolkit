@@ -11,18 +11,6 @@ ATBSGridUnit::ATBSGridUnit()
 
 }
 
-void ATBSGridUnit::SelectGridUnit()
-{
-	OnGridUnitSelectedNative.Broadcast();
-	OnGridUnitSelected.Broadcast();
-}
-
-void ATBSGridUnit::DeSelectGridUnit()
-{
-	OnGridUnitDeSelectedNative.Broadcast();
-	OnGridUnitDeSelected.Broadcast();
-}
-
 // Called when the game starts or when spawned
 void ATBSGridUnit::BeginPlay()
 {

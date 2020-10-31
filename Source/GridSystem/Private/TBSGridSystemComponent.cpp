@@ -6,6 +6,7 @@
 #include "TBSGridSystemManager.h"
 #include "EngineUtils.h"
 #include "TBSGridUnit.h"
+#include "UnrealGameplayStatics.h"
 
 // Sets default values for this component's properties
 UTBSGridSystemComponent::UTBSGridSystemComponent()
@@ -24,10 +25,10 @@ void UTBSGridSystemComponent::SelectGridUnit(AActor* Actor)
 	{
 		if (SelectedUnit)
 		{
-			SelectedUnit->DeSelectGridUnit();
+			UUnrealGameplayStatics::DeSelectActor(SelectedUnit, GetOwner());
 		}
 		SelectedUnit = GridUnit;
-		SelectedUnit->SelectGridUnit();
+		UUnrealGameplayStatics::SelectActor(SelectedUnit, GetOwner());
 
 		PostGridUnitSelectedNative.Broadcast(GridUnit);
 		PostGridUnitSelected.Broadcast(GridUnit);
@@ -40,7 +41,7 @@ void UTBSGridSystemComponent::SelectGridUnits(TArray<FGridUnitCoordinate> Coordi
 	GridSystemManager->GetCoordinateUnits(Coordinates, Units);
 	for (ATBSGridUnit* Unit : Units)
 	{
-		Unit->SelectGridUnit();
+	//	Unit->DispatchOnSelected(GetOwner());
 	}
 }
 

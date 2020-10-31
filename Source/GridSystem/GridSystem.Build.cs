@@ -38,6 +38,7 @@ public class GridSystem : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"UnrealGameplayToolkit"
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
